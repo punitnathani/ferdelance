@@ -5,12 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Fer De Lance</title>
+  <style>
+    .wa-box #ccode{
+      width: 3em;
+    }
+  </style>
 </head>
 <body>
   <h2>WhatsApp</h2>
-  <p>Enter a phone number to message someone on WhatsApp without saving their contact</p>
+  <p>Enter a phone number to message someone on WhatsApp without saving their contact.</p>
+  <p>The country code defaults to that of India: +91</p>
   <div class="wa-box">
-    <label for="phone">(India) +91-</label>
+    <label for="ccode">(code)+</label>
+    <input type="tel" name="ccode" id="ccode" placeholder="91">
+    <label for="phone">-</label>
     <input type="tel" id="phone" name="phone" placeholder="9876543210" pattern="[0-9]{10}" required minlength="10">
     <br><br>
     <button type="submit" id="openWa">Open WhatsApp</button>
@@ -23,8 +31,12 @@
 <script type="text/javascript">
   const openBtnElem = document.getElementById('openWa');
   openBtnElem.addEventListener('click', () => {
+    let ccode = document.getElementById('ccode').value;
     const contact = document.getElementById('phone').value;
-    const waUrl = 'https://wa.me/91' + contact;
+    if (ccode === "" || ccode === undefined) {
+      ccode = "91";
+    }
+    const waUrl = 'https://wa.me/' + ccode + contact;
     window.location.href = waUrl;
   });
 </script>
