@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Fer De Lance</title>
+</head>
+<body>
+  <h2>WhatsApp</h2>
+  <p>Enter a phone number to message someone on WhatsApp without saving their contact</p>
+  <div class="wa-box">
+    <label for="phone">(India) +91-</label>
+    <input type="tel" id="phone" name="phone" placeholder="9876543210" pattern="[0-9]{10}" required minlength="10">
+    <br><br>
+    <button type="submit" id="openWa">Open WhatsApp</button>
+  </div>
+  <br>
+  <small>This functionality is provided as is, without any validation or WhatsApp auth. It only helps redirect to WhatsApp URL and is neither associated with WhatsApp nor takes any responsibility if the target number is not found. Please use it at your own discretion.</small>
+  <p></p>
+</body>
+
+<script type="text/javascript">
+  const openBtnElem = document.getElementById('openWa');
+  openBtnElem.addEventListener('click', () => {
+    const contact = document.getElementById('phone').value;
+    const waUrl = 'https://wa.me/91' + contact;
+    window.location.href = waUrl;
+  });
+</script>
+</html>
